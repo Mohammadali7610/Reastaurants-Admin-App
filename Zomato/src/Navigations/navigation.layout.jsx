@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddProduct from "../Features/Admin/Restuarant/AddProduct/AddProduct.Layout.jsx";
 import ProductList from "../Features/Admin/Restuarant/ProductList/ProductList.Layout.jsx";
-import AddRestaurant from "../Features/Admin/Restuarant/RestaurantForm/AddRestaurant.Layout.jsx";
+import AddRestaurant from "../Features/Admin/Restuarant/AddRestaurant/AddRestaurant.Layout.jsx";
 import RestaurantList from "../Features/Admin/Restuarant/RestaurantList/RestaurantList.Layout.jsx";
 
 

@@ -36,7 +36,7 @@ const RestaurantList = () => {
         {filteredRestuarant.map((restaurant, index) => (
           <div className="restaurant-card m-2" key={index}>
             <h3>{index + 1}.<strong>Restaurant Name:</strong>{restaurant.name}</h3>
-            <img src={restaurant.image} alt={restaurant.name} style={{ width: "200px" }} />
+            <img src={restaurant.image} alt={restaurant.name} style={{ height: "200px"}} />
             <p><strong>Address:</strong> {restaurant.address},{restaurant.city},{restaurant.state},{restaurant.country}</p>
             <p><strong>Food Type:</strong> {restaurant.foodType}</p>
             <p><strong>Latitude:</strong> {restaurant.latitude}</p>
