@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Select from "react-select";
 
 const AddProduct = () => {
+  const currentURL = window.location.href;
+  console.log(currentURL);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [formData, setFormData] = useState({
-    restaurantIndex: -1,
     foodImage: "",
     foodName: "",
     foodPrice: "",
@@ -15,7 +16,11 @@ const AddProduct = () => {
   const [restaurantsData, setRestaurantsData] = useState(
     JSON.parse(localStorage.getItem("restaurants")) || []
   );
-  console.log(restaurantsData);
+  const {id}  = useParams();
+  console.log(id)
+  const defaultInput = restaurantsData.findIndex((item) => id == item.id);
+  console.log(defaultInput)
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -29,10 +34,11 @@ const AddProduct = () => {
     value: index,
     label: restaurant.name,
   }));
-  const handleRestaurantSelection = (restaurantIndex) => {
+
+  const handleRestaurantSelection = (restaurantOption) => {
     setFormData({
       ...formData,
-      restaurantIndex,
+      restaurantIndex: restaurantOption.value,
     });
   };
 
@@ -71,54 +77,68 @@ const AddProduct = () => {
         <h2 className="text-3xl mb-6">Add Product</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label
-              htmlFor="restaurant"
-              className="block text-sm font-medium text-gray-400 mb-1"
-            >
-              Select Restaurant
-            </label>
-            <Select
-              options={selectRestaurantOption}
-              onChange={handleRestaurantSelection}
-              className="p-2 w-full bg-gray-700 rounded-md"
-              placeholder="Search and select restaurant"
-              isSearchable
-              noOptionsMessage={() => "This Restaurant not found..."}
-              styles={{
-                placeholder:(baseStyle) =>({
-                  ...baseStyle,
-                  color:"#fff"
-                }),
-                input:(baseStyle) =>({
-                  ...baseStyle,
-                }),
-                container:(baseStyle) =>({
-                  ...baseStyle,
-                  padding:"0"
-                }),
-                control:(baseStyle) =>({
-                  ...baseStyle,
-                  backgroundColor:"rgb(55 65 81)",
-                  boxShadow:"0 0 0 1 white",
-                  border:"none",
-                  padding:"0"
-
-                }),
-                menuList:(baseStyle,state) => ({
-                  ...baseStyle,
-                  backgroundColor:state.isFocused ? "#fff" : "rgb(55 65 81)",
-                  borderRadius:""
-                }),
-                option:(baseStyle, state) => ({
-                     ...baseStyle,
-                   backgroundColor:state.isFocused ? "white" : "rgb(55 65 81)",
-                   color:state.isFocused ? "rgb(55 65 81)" : "white",
-                   outlineStyle:"none"
-
-                })
-              }}
-              required
-            />
+            {restaurantsData.map((item, index) => {
+              if (id == item.id) {
+                return (
+                  <div key={index}>
+                    <label
+                      htmlFor="restaurant"
+                      className="block text-sm font-medium text-gray-400 mb-1"
+                    >
+                      Select Restaurant
+                    </label>
+                    <Select
+                      options={selectRestaurantOption}
+                      defaultInputValue={item.name}
+                      onChange={handleRestaurantSelection}
+                      className="p-2 w-full bg-gray-700 rounded-md"
+                      placeholder="Search and select restaurant"
+                      isSearchable
+                      noOptionsMessage={() => "This Restaurant not found..."}
+                      styles={{
+                        
+                        placeholder: (baseStyle) => ({
+                          ...baseStyle,
+                          color: "#fff",
+                        }),
+                        singleValue: (baseStyle) => ({
+                          ...baseStyle,
+                          color: "#fff",
+                        }),
+                        container: (baseStyle) => ({
+                          ...baseStyle,
+                          padding: "0",
+                        }),
+                        control: (baseStyle) => ({
+                          ...baseStyle,
+                          backgroundColor: "rgb(55 65 81)",
+                          color:"#000",
+                          boxShadow: "0 0 0 1 white",
+                          border: "none",
+                          padding: "0",
+                        }),
+                        menuList: (baseStyle, state) => ({
+                          ...baseStyle,
+                          backgroundColor: state.isFocused
+                            ? "#fff"
+                            : "rgb(55 65 81)",
+                          borderRadius: "",
+                        }),
+                        option: (baseStyle, state) => ({
+                          ...baseStyle,
+                          backgroundColor: state.isFocused
+                            ? "white"
+                            : "rgb(55 65 81)",
+                          color: state.isFocused ? "rgb(55 65 81)" : "white",
+                          outlineStyle: "none",
+                        }),
+                      }}
+                      required
+                    />
+                  </div>
+                );
+              }
+            })}
           </div>
 
           <div className="mb-4">

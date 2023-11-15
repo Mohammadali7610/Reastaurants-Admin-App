@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
+
+
 
 const AddRestaurant = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
+    id:uuidv4(),
     name: "",
     address: "",
     foodType: "",
@@ -340,6 +344,9 @@ const AddRestaurant = () => {
               <div className="mb-2">
                 <strong>Image:</strong> 
                 <img src={formData.image} style={{width:"150px",height:"100px"}} alt="Image" />
+              </div>
+              <div className="mb-2">
+                <strong>Restaurant id:</strong> {formData.id}
               </div>
               <div className="mb-2">
                 <strong>Restaurant address:</strong> {formData.address}
