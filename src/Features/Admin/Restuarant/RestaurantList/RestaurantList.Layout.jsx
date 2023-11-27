@@ -1,4 +1,4 @@
-import  { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 
 const RestaurantList = () => {
@@ -6,14 +6,26 @@ const RestaurantList = () => {
     JSON.parse(localStorage.getItem("restaurants")) || []
   );
   const [search, setSearch] = useState("");
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [deleteIndex, setDeleteIndex] = useState(null);
 
   const handleDeleteRestaurant = (index) => {
-    const updatedRestaurants = [...restaurants];
-    updatedRestaurants.splice(index, 1);
-    setRestaurants(updatedRestaurants);
-    localStorage.setItem("restaurants", JSON.stringify(updatedRestaurants));
+    setDeleteIndex(index);
+    setShowConfirmationModal(true);
   };
 
+  const confirmDelete = () => {
+    const updatedRestaurants = [...restaurants];
+    updatedRestaurants.splice(deleteIndex, 1);
+    setRestaurants(updatedRestaurants);
+    localStorage.setItem("restaurants", JSON.stringify(updatedRestaurants));
+    setShowConfirmationModal(false);
+  };
+
+  const cancelDelete = () => {
+    setDeleteIndex(null);
+    setShowConfirmationModal(false);
+  };
   const filteredRestuarant = useMemo(() => {
     const filteredList = restaurants.filter((restaurant) => {
       const searchLc = search.toLowerCase();
@@ -44,7 +56,7 @@ const RestaurantList = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="restaurant-cards flex justify-center align-middle ">
+      <div className="restaurant-cards ">
         {filteredRestuarant.map((restaurant, index) => (
           <div className="restaurant-card m-2" key={index}>
             <h3>
@@ -59,6 +71,30 @@ const RestaurantList = () => {
             <p>
               <strong>Restaurant id:</strong> {restaurant.id}
             </p>
+            <p>
+              <strong>Address:</strong> {restaurant.address},{restaurant.city},
+              {restaurant.state},{restaurant.country}
+            </p>
+            <p>
+              <strong>Food Type:</strong> {restaurant.foodType}
+            </p>
+            <p>
+              <strong>Latitude:</strong> {restaurant.latitude}
+            </p>
+            <p>
+              <strong>Longitude:</strong>
+              {restaurant.longitude}
+            </p>
+            <p>
+              <strong>Open Time :</strong>
+              {restaurant.openingHours} to {restaurant.closingHours}
+            </p>
+            <p>
+              <strong>Enter Your Help Line Number</strong>
+              {restaurant.helpLineNumber}
+            </p>
+            <p>{restaurant.discriptionAboutRestaurant}</p>
+
             <div className="m-2">
               <Link
                 to={`/addproduct/${restaurant.id}`}
@@ -77,6 +113,25 @@ const RestaurantList = () => {
           </div>
         ))}
       </div>
+      {showConfirmationModal && (
+        <div className="modal-overlay fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="modal bg-gray-800 p-4 rounded-lg shadow-lg">
+            <p className="text-white">Are you sure you want to delete this restaurant?</p>
+            <button
+              onClick={confirmDelete}
+              className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 mr-4 rounded focus:outline-none focus:ring focus:border-gray-400"
+            >
+              Yes
+            </button>
+            <button
+              onClick={cancelDelete}
+              className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 mr-4 rounded focus:outline-none focus:ring focus:border-gray-400"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -5,13 +5,27 @@ const ProductList = () => {
     JSON.parse(localStorage.getItem("restaurants")) || []
   );
   const [search, setSearch] = useState("");
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [deleteIndex, setDeleteIndex] = useState(null);
 
-  const handleDeleteProduct = (restaurantIndex, productIndex) => {
+  const handleDeleteProduct = (index) => {
+    setDeleteIndex(index);
+    setShowConfirmationModal(true);
+  };
+
+  const confirmDelete = () => {
     const updatedRestaurants = [...restaurants];
-    updatedRestaurants[restaurantIndex].products.splice(productIndex, 1);
+    updatedRestaurants[deleteIndex].products.splice(deleteIndex, 1);
     setRestaurants(updatedRestaurants);
     localStorage.setItem("restaurants", JSON.stringify(updatedRestaurants));
+    setShowConfirmationModal(false);
   };
+
+  const cancelDelete = () => {
+    setDeleteIndex(null);
+    setShowConfirmationModal(false);
+  };
+
 
   const filteredRestuarant = useMemo(() => {
     const filteredList = restaurants.filter((restaurant) => {
@@ -78,6 +92,26 @@ const ProductList = () => {
           </div>
         ))}
       </div>
+      {showConfirmationModal && (
+        <div className="modal-overlay fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="modal bg-gray-800 p-4 rounded-lg shadow-lg">
+            <p className="text-white">Are you sure you want to delete this product?</p>
+            <button
+              onClick={confirmDelete}
+              className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 mr-4 rounded focus:outline-none focus:ring focus:border-gray-400"
+            >
+              Yes
+            </button>
+            <button
+              onClick={cancelDelete}
+              className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 mr-4 rounded focus:outline-none focus:ring focus:border-gray-400"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      )}
+    
     </div>
   );
 };

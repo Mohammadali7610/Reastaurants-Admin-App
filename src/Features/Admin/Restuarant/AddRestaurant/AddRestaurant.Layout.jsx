@@ -200,7 +200,7 @@ const AddRestaurant = () => {
 
             <div className="mb-4">
               <label
-                htmlFor="city"
+                htmlFor="tel"
                 className="block text-sm font-medium text-gray-400 mb-1"
               >
                 City
