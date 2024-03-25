@@ -56,14 +56,14 @@ const AddRestaurant = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center text-white">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-1/2 m-4">
-        <h2 className="text-3xl mb-6">Add Restaurant</h2>
+      <div className="bg-gray-800 p-3 sm:p-8 rounded-lg shadow-lg  w-10/12 sm:w-1/2 m-4">
+        <h2 className="text-lg sm:text-3xl mb-6">Add Restaurant</h2>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
             <div className="mb-4">
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Restaurant Name
               </label>
@@ -73,7 +73,7 @@ const AddRestaurant = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
                 required
               />
             </div>
@@ -81,7 +81,7 @@ const AddRestaurant = () => {
             <div className="mb-4">
               <label
                 htmlFor="address"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Address
               </label>
@@ -91,7 +91,7 @@ const AddRestaurant = () => {
                 name="address"
                 value={formData.address}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
                 required
               />
             </div>
@@ -99,7 +99,7 @@ const AddRestaurant = () => {
             <div className="mb-4">
               <label
                 htmlFor="latitude"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Latitude
               </label>
@@ -109,14 +109,14 @@ const AddRestaurant = () => {
                 name="latitude"
                 value={formData.latitude}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="longitude"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Longitude
               </label>
@@ -126,14 +126,14 @@ const AddRestaurant = () => {
                 name="longitude"
                 value={formData.longitude}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="openingHours"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Opening Hours
               </label>
@@ -143,14 +143,14 @@ const AddRestaurant = () => {
                 name="openingHours"
                 value={formData.openingHours}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="closingHours"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Closing Hours
               </label>
@@ -160,14 +160,14 @@ const AddRestaurant = () => {
                 name="closingHours"
                 value={formData.closingHours}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="image"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Image Url
               </label>
@@ -177,14 +177,14 @@ const AddRestaurant = () => {
                 name="image"
                 value={formData.image}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="helpLineNumber"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Help Line Number
               </label>
@@ -194,14 +194,14 @@ const AddRestaurant = () => {
                 name="helpLineNumber"
                 value={formData.helpLineNumber}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="tel"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 City
               </label>
@@ -211,14 +211,14 @@ const AddRestaurant = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="state"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 State
               </label>
@@ -228,14 +228,14 @@ const AddRestaurant = () => {
                 name="state"
                 value={formData.state}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="country"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Country
               </label>
@@ -245,14 +245,14 @@ const AddRestaurant = () => {
                 name="country"
                 value={formData.country}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
 
             <div className="mb-4">
               <label
                 htmlFor="pincode"
-                className="block text-sm font-medium text-gray-400 mb-1"
+                className="block text-xs sm:text-sm font-medium text-gray-400 mb-1"
               >
                 Pincode
               </label>
@@ -262,15 +262,15 @@ const AddRestaurant = () => {
                 name="pincode"
                 value={formData.pincode}
                 onChange={handleInputChange}
-                className="p-2 w-full bg-gray-700 rounded-md"
+                className="p-2 h-7 sm:h-10  w-full bg-gray-700 rounded-md"
               />
             </div>
           </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-400 mb-1">
+          <div className="mb-4 ">
+            <label className="block text-xs sm:text-sm font-medium text-gray-400 mb-1">
               Food Type
             </label>
-            <div className="flex space-x-4">
+            <div className=" sm:space-x-4 grid sm:flex">
               <label className="flex items-center space-x-2">
                 <input
                   type="radio"
@@ -280,10 +280,10 @@ const AddRestaurant = () => {
                   checked={formData.foodType === "Only veg"}
                   onChange={handleInputChange}
                 />
-                <span className="text-sm">Veg</span>
+                <span className="text-xs sm:text-sm">Veg</span>
               </label>
 
-              <label className="flex items-center space-x-2">
+              <label className="flex  items-center space-x-2">
                 <input
                   type="radio"
                   id="nonveg"
@@ -292,7 +292,7 @@ const AddRestaurant = () => {
                   checked={formData.foodType === "Only nonveg"}
                   onChange={handleInputChange}
                 />
-                <span className="text-sm">Nonveg</span>
+                <span className="text-xs sm:text-sm">Nonveg</span>
               </label>
 
               <label className="flex items-center space-x-2">
@@ -304,7 +304,7 @@ const AddRestaurant = () => {
                   checked={formData.foodType === "Veg/NonVeg"}
                   onChange={handleInputChange}
                 />
-                <span className="text-sm">Both (Veg & NonVeg)</span>
+                <span className="text-xs sm:text-sm">Both (Veg & NonVeg)</span>
               </label>
             </div>
 
@@ -321,7 +321,7 @@ const AddRestaurant = () => {
                 value={formData.discriptionAboutRestaurant}
                 onChange={handleInputChange}
                 className="p-2 w-full bg-gray-700 rounded-md"
-                rows="4"
+                rows="2"
               />
             </div>
           </div>
@@ -393,7 +393,7 @@ const AddRestaurant = () => {
           </div>
         )}
 
-        <div className="mt-6">
+        <div className="mt-6 ">
           <Link
             to="/restaurantList"
             className="text-blue-400 hover:text-blue-300"

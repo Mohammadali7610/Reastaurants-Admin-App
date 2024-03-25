@@ -95,16 +95,16 @@ const ProductList = () => {
       {showConfirmationModal && (
         <div className="modal-overlay fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="modal bg-gray-800 p-4 rounded-lg shadow-lg">
-            <p className="text-white">Are you sure you want to delete this product?</p>
+            <p className="text-white  text-xs sm:text-lg">Are you sure you want to delete this product?</p>
             <button
               onClick={confirmDelete}
-              className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 mr-4 rounded focus:outline-none focus:ring focus:border-gray-400"
+              className="bg-gray-500 hover:bg-gray-600 text-white  text-xs sm:text-lg py-2 px-3 sm:py-2 sm:px-4 mr-4 rounded focus:outline-none focus:ring focus:border-gray-400"
             >
               Yes
             </button>
             <button
               onClick={cancelDelete}
-              className="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 mr-4 rounded focus:outline-none focus:ring focus:border-gray-400"
+              className="bg-gray-500 hover:bg-gray-600 text-white  text-xs sm:text-lg py-2 px-3 sm:py-2 sm:px-4 mr-4 rounded focus:outline-none focus:ring focus:border-gray-400"
             >
               No
             </button>
